@@ -444,6 +444,7 @@ function Missions({ mission, setMission, badges }:any){
       <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
         <input value={val} onChange={e=>setVal(e.target.value)} style={{ flex: 1, padding: 8, borderRadius: 8, border: "1px solid #e5e7eb" }}/>
         <button onClick={()=>setMission(val)} style={{ padding: "8px 12px", borderRadius: 12, border: "1px solid #e5e7eb", background: "#f8fafc" }}>Save</button>
+        <button
       </div>
     </div>
   );
