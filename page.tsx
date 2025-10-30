@@ -243,6 +243,7 @@ function MealLogger({ onAdd, familyMode, portions }:any){
   function handleAdd(){
     if (!name || !calories) return;
     onAdd({ name, calories: famAdj(Number(calories)), protein: famAdj(Number(protein||0)), meal });
+    logEvent("meal_logged", { name, calories, protein, meal });
     setName(""); setCalories(""); setProtein(""); setPhotoEst(null);
   }
   async function fileToBase64(file: File): Promise<string>{
