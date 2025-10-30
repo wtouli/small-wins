@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import BarcodeDialog from "@/components/BarcodeDialog";
 import { AuthButtons } from "@/components/AuthClient";
+import { logEvent } from "@/lib/analytics";
 
 const fmt = (n:number) => Math.round(n);
 const todayKey = () => new Date().toISOString().slice(0,10);
@@ -193,6 +194,7 @@ function QuickActions({ favorites, onQuickAdd, onCreateFavorite, onUpdateFavorit
         <button onClick={()=>{
           if(!favName || !favCal) return;
           onCreateFavorite({ name: favName, calories: Number(favCal), protein: Number(favProt||0) });
+      logEvent("favorite_added", { name: favName });
           setFavName(""); setFavCal(""); setFavProt("");
         }} style={{ padding: "10px 14px", borderRadius: 12, border: "1px solid #e5e7eb", background: "#f8fafc" }}>Save Favorite</button>
       </div>
